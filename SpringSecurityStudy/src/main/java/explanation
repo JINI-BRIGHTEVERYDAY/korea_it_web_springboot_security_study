@@ -1,0 +1,29 @@
+JWT (JJWT)
+jjwt - api
+JWT 생성 / 파싱 / 검증에 필요한 인터페이스와 핵심 로직이 포함된 API 모듈
+JwtBuilder, JwtParser, Claims 등 핵심 클래스가 이 안에 있다.
+하지만, 단독으로는 작동하지 않는다 => 구현체가 필요하다
+
+jjwt-impl
+jjwt-api의 구현체 라이브러리
+실제로 토큰을 만들고 파싱하는 구현 로직이 여기에 있다.
+
+컴파일 시에는 API만 있으면 되고, 실행시에는 구현체가 필요하기 때문에
+
+jjwt-jackson
+JWT의 payload(Claims 부분)을 JSON으로 직렬화/역직렬화할 때 Jackson 사용을 지원하는 모듈
+기본적으로 jjwt는 JSON 처리를 위한 구현체가 필요함
+
+JWT
+<Header>.<Payload>.<Signature>
+header => 서명 알고리즘, 토큰 타입
+payload => Claim이라고 부르며, 실제 사용자 정보가 담김
+        (Base64Url로 인코딩 되어 있지만, 암호화되어 있지 않기 때문에 => 누구나 읽을 수 있다.)
+        ex) 유저 ID, 권한, 만료일시 등
+
+Signature => 위변조 방지 역할
+             서버에서 발급 시 사용한 secretKey로 서명
+
+HMAC-SHA
+HS512 = HMAC + SHA-512
+// HS512는 secret key로 512 bit (64byte)
