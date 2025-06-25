@@ -1,4 +1,4 @@
-package dto;
+package com.koreait.SpringSecurityStudy.dto;
 
 import com.koreait.SpringSecurityStudy.entity.User;
 import lombok.AllArgsConstructor;
