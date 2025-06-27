@@ -1,8 +1,8 @@
 package com.koreait.SpringSecurityStudy.security.filter;
 
-import com.koreait.SpringSecurityStudy.security.Model.PrincipalUser;
 import com.koreait.SpringSecurityStudy.entity.User;
 import com.koreait.SpringSecurityStudy.repository.UserRepository;
+import com.koreait.SpringSecurityStudy.security.Model.PrincipalUser;
 import com.koreait.SpringSecurityStudy.security.jwt.JwtUtil;
 import io.jsonwebtoken.Claims;
 import jakarta.servlet.*;
@@ -49,6 +49,7 @@ public class JwtAuthenticationFilter implements Filter {
                 //서명 위조나 만료 시 예외 발생
                 String id = claims.getId();
                 //UserDetailsService
+
                 Integer userId = Integer.parseInt(id);
                 Optional<User> optionalUser = userRepository.getUserByUserId(userId);
                 optionalUser.ifPresentOrElse((user) -> {
@@ -59,6 +60,7 @@ public class JwtAuthenticationFilter implements Filter {
                             .username(user.getUsername())
                             .password(user.getPassword())
                             .email(user.getEmail())
+                            .userRoles(user.getUserRoles())
                             .build();
                     //UsernamePasswordAuthenticationToken 직접 생성
                     Authentication authentication = new UsernamePasswordAuthenticationToken(principalUser, "", principalUser.getAuthorities());

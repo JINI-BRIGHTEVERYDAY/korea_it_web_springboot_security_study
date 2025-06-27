@@ -24,10 +24,20 @@ public class UserRepository {
     }
 
     public Optional<User> getUserByUserId(Integer userId) {
+
         return userMapper.getUserByUserId(userId);
     }
 
     public Optional<User> getUserByUsername(String username) {
+
         return userMapper.getUserByUsername(username);
+    }
+
+    public int updateEmail(User user) {
+        return userMapper.updateEmail(user);
+    }
+
+    public int updatePassword(Integer userId, String password) {
+        return userMapper.updatePassword(userId, password);
     }
 }

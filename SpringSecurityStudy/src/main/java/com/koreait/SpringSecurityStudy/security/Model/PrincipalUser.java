@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 @Data
@@ -26,6 +27,6 @@ public class PrincipalUser implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return userRoles.stream().map(
                 userRole -> new SimpleGrantedAuthority(userRole.getRole().getRoleName())
-                ).collect(Collectors.toList());
+        ).collect(Collectors.toList());
     }
 }
