@@ -45,7 +45,7 @@ public class OAuth2SuccessHendler implements AuthenticationSuccessHandler {
         if (oAuth2User == null) {
             // 프론트로 provider와 providerUserId 전달
             response.sendRedirect("http:/localhost:3000/auth/oauth2?provider=" + provider + "&providerUserId=" + providerUserId + "&email=" + email);
-
+            return;
         }
 
         // 만약에 연동된 사용자가 있다면? => userId를 통해 회원 정보를 조회

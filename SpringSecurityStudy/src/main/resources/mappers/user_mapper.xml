@@ -29,8 +29,8 @@
 
     <insert id="addUser" useGeneratedKeys="true" keyProperty="userId">
         insert into
-        user_tb(user_id, username, password, email)
-        values (0, #{username}, #{password}, #{email});
+        user_tb
+        values (0, #{username}, #{password}, #{email}, now(), null);
     </insert>
     <select id="getUserByUserId" resultMap="UserResultMap">
         select
@@ -77,6 +77,30 @@
         left join role_tb rt on (rt.role_id = urt.role_id)
         where
         ut.username = #{username};
+    </select>
+
+    <select id="getUserByEmail" resultMap="UserResultMap">
+        select
+            ut.user_id,
+            ut.username,
+            ut.password,
+            ut.email,
+
+            urt.user_role_id,
+            urt.user_id AS urt_user_id,
+            urt.role_id AS urt_role_id,
+            urt.create_dt,
+            urt.update_dt,
+
+            rt.role_id,
+            rt.role_name,
+            rt.role_name_kor
+        from
+            user_tb ut
+            left join user_role_tb urt on (urt.user_id = ut.user_id)
+            left join role_tb rt on (rt.role_id = urt.role_id)
+        where
+            ut.email = #{email};
     </select>
 
     <update id="updateEmail">

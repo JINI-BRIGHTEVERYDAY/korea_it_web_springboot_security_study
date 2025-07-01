@@ -32,7 +32,7 @@ public class OAuth2PrincipalUserService extends DefaultOAuth2UserService {
 
         //어떤 OAuth2 Provider인지 확인
         // Provider => 공급처 (google, naver, kakao)
-        String provider = userRequest.getClientRegistration().getClientId();
+        String provider = userRequest.getClientRegistration().getRegistrationId();
 
         //로그인한 사용자의 식별자(id), 이메일
         //로그인시 사용한 이메일

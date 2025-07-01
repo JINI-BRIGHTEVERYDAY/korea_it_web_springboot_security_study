@@ -1,7 +1,7 @@
 package com.koreait.SpringSecurityStudy.repository;
 
 import com.koreait.SpringSecurityStudy.entity.UserRole;
-import com.koreait.SpringSecurityStudy.Mapper.UserRoleMapper;
+import com.koreait.SpringSecurityStudy.mapper.UserRoleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 

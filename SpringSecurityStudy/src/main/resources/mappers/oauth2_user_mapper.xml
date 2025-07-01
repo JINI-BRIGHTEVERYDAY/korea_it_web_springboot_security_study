@@ -10,7 +10,14 @@
             oauth2_user_tb
         where
             provider = #{provider} and
-            provider_user_Id = #{provideruserId}
+            provider_user_id = #{providerUserId}
     </select>
+
+    <insert id="insertOAuth2User">
+        insert into
+            oauth2_user_tb
+        values
+            (0, #{userId}, #{provider}, #{providerUserId}, now(), null)
+    </insert>
 
 </mapper>

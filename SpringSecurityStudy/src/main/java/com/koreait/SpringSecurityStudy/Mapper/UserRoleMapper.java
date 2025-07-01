@@ -1,4 +1,4 @@
-package com.koreait.SpringSecurityStudy.Mapper;
+package com.koreait.SpringSecurityStudy.mapper;
 
 import com.koreait.SpringSecurityStudy.entity.UserRole;
 import org.apache.ibatis.annotations.Mapper;

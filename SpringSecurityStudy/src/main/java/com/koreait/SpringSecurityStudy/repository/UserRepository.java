@@ -1,6 +1,6 @@
 package com.koreait.SpringSecurityStudy.repository;
 
-import com.koreait.SpringSecurityStudy.Mapper.UserMapper;
+import com.koreait.SpringSecurityStudy.mapper.UserMapper;
 import com.koreait.SpringSecurityStudy.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DuplicateKeyException;
@@ -31,6 +31,10 @@ public class UserRepository {
     public Optional<User> getUserByUsername(String username) {
 
         return userMapper.getUserByUsername(username);
+    }
+
+    public Optional<User> getUserByEmail(String email) {
+        return userMapper.getUserByEmail(email);
     }
 
     public int updateEmail(User user) {
